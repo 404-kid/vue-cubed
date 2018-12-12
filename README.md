@@ -1,4 +1,4 @@
-# plugin-test-v2
+# Vue-Cubed
 
 ## Project setup
 ```

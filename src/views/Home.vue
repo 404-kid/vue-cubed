@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Welcome to the Vue-cubed example</h1>
+    <VueScene class="super"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+  },
+  mounted() {
+    this.$renderer.setClearColor("rgba(200,0,0,1)")
+    this.$renderer.render(this.$scene, this.$camera)
   }
 }
 </script>
+<style >
+
+</style>
