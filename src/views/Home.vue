@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Welcome to the Vue-cubed example</h1>
-    <VueScene class="super"/>
+    <VueScene class="mega"/>
   </div>
 </template>
 
@@ -19,5 +19,9 @@ export default {
 }
 </script>
 <style >
+.mega{
+  height: 700px;
+  width: 1000px;
+}
 
 </style>

@@ -8,16 +8,14 @@ export default {
       vue.prototype.$camera = new Three.PerspectiveCamera()
 
       vue.component('VueScene', {
-        render(createElement) {
+        render: function (createElement) {
           return createElement('div',
           {
-            attrs: {
-              id: 'ctx'
-            },
+            ref: 'ctx'
           }
           )
         },
-        data () {
+        data: function () {
           return {
             canvas: null
           }
@@ -27,11 +25,11 @@ export default {
         },
         methods: {
           createRenderer() {
-            this.canvas = document.getElementById('ctx')
-
-            this.canvas.appendChild( this.$renderer.domElement )
+            this.$renderer.setSize( this.$refs.ctx.clientWidth, this.$refs.ctx.clientHeight )
+            this.$refs.ctx.appendChild( this.$renderer.domElement )
           },
         }
+
       })
     }
 }
