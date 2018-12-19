@@ -10,7 +10,13 @@ export default {
   name: 'about',
   mounted() {
     this.$renderer.setClearColor("rgba(0,0,200,1)")
-    this.$renderer.render(this.$scene, this.$camera)
+    this.init()
+  },
+  methods: {
+    init() {
+      
+      this.$renderer.render(this.$scene, this.$camera)
+    }
   }
 }
 
