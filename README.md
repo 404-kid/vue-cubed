@@ -12,7 +12,7 @@ npm i vue-cubed
 ### Initiate at the start of your project
 (in main.js)
 ```
-import VueCubed from './plugins/vue-cubed'
+import VueCubed from 'vue-cubed'
 
 
 Vue.use(VueCubed)
@@ -32,12 +32,22 @@ Vue-cubed creates global variables, this is done to prevent multiple renderers b
 this.$THREE (gives you acsess to the Three.js modules use it like you would use THREE in normal Three.js applications)
 this.$scene (the global scene that will be switched between components)
 this.$camera (the global camera)
-this.$renderer (the global renderer, MAKE SURE TO CALL this.$renderer.render(this.$scene, this.$camera) INSIDE THE PARENT COMPONENT)
+this.$render() (the global rendering call. Calling it will call this.$renderer.render(this.$scene, this.$camera) you must put this in the component to work)
+this.$renderer (the global renderer)
 ```
 From here on in you can create objects and manipulate the scene as you please.
 
+## More info
+[npm package](https://www.npmjs.com/package/vue-cubed)
+
+[Repository](https://github.com/404-kid/vue-cubed-src)
+
+[Website(under construction)](http://vue-cubed.com/)
+
+This npm package uses Three.js please check out some of their [examples](https://threejs.org/)
 
 
 ### TODO
 Create obj registry for object pooling to reduce scene switching load times.
+
 Create animation manager.
