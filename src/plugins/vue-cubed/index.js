@@ -25,6 +25,7 @@ export default {
         },
         mounted() {
           this.createRenderer()
+          this.animate()
         },
         beforeDestroy() {
           this.clearScene()
@@ -36,9 +37,12 @@ export default {
           },
           clearScene() {
             this.$scene.remove.apply(this.$scene, this.$scene.children);
+          },
+          animate(){
+            requestAnimationFrame( this.animate )
+            this.$render()
           }
-        }
-
+        },
       })
     }
 }
