@@ -3,24 +3,28 @@
 
 <script>
 export default {
-  name: "sphere",
+  name: "cylinder",
   props: {
     color: {
       type: String,
       default: "rgba(250,250,250,1)"
     },
-    radius: {
+    height: {
       type: Number,
-      default: 5
+      default: 10
     },
-    segments:{
+    radius: {
       type: Object,
       default() {
         return{
-          w: 16,
-          h: 16
+          top: 2,
+          bot: 2
         }
       }
+    },
+    segments:{
+      type: Number,
+      default: 20
     },
     position: {
       type: Object,
@@ -32,7 +36,7 @@ export default {
         }
       }
     },
-    sphere: {
+    cylinder: {
       type: Object,
       default() {
         return{ 
@@ -60,16 +64,16 @@ export default {
   },
   methods: {
     init() {
-      let geometry = new this.$THREE.SphereGeometry( this.radius, this.segments.w, this.segments.h )
+      let geometry = new this.$THREE.CylinderGeometry( this.radius.top, this.radius.bot, this.height, this.segments )
       let material = new this.$THREE.MeshPhysicalMaterial( {color: this.color, emissive:this.color, reflectivity: .5, metalness: .5} )
-      this.sphere.val = new this.$THREE.Mesh( geometry, material )
-      this.sphere.val.rotation.x += this.rotation.x
-      this.sphere.val.rotation.y += this.rotation.y
-      this.sphere.val.rotation.z += this.rotation.z
-      this.sphere.val.position.x += this.position.x
-      this.sphere.val.position.y += this.position.y
-      this.sphere.val.position.z += this.position.z
-      this.$scene.add( this.sphere.val )
+      this.cylinder.val = new this.$THREE.Mesh( geometry, material )
+      this.cylinder.val.rotation.x += this.rotation.x
+      this.cylinder.val.rotation.y += this.rotation.y
+      this.cylinder.val.rotation.z += this.rotation.z
+      this.cylinder.val.position.x += this.position.x
+      this.cylinder.val.position.y += this.position.y
+      this.cylinder.val.position.z += this.position.z
+      this.$scene.add( this.cylinder.val )
     },
   }
 

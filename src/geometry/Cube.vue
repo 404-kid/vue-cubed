@@ -57,9 +57,9 @@ export default {
   },
   methods: {
     init() {
-      let area = new this.$THREE.CubeGeometry(this.size.w,this.size.h,this.size.d)
+      let geometry = new this.$THREE.CubeGeometry(this.size.w,this.size.h,this.size.d)
       let cubeMat = new this.$THREE.MeshPhysicalMaterial({color: this.color, emissive:this.color, reflectivity: .5, metalness: .5})
-      this.cube.val = new this.$THREE.Mesh(area, cubeMat)
+      this.cube.val = new this.$THREE.Mesh(geometry, cubeMat)
       this.cube.val.rotation.x += this.rotation.x
       this.cube.val.rotation.y += this.rotation.y
       this.cube.val.rotation.z += this.rotation.z

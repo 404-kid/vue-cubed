@@ -3,7 +3,7 @@
 
 <script>
 export default {
-  name: "sphere",
+  name: "torus",
   props: {
     color: {
       type: String,
@@ -11,14 +11,18 @@ export default {
     },
     radius: {
       type: Number,
-      default: 5
+      default: 3
+    },
+    tube: {
+      type: Number,
+      default: 1
     },
     segments:{
       type: Object,
       default() {
         return{
-          w: 16,
-          h: 16
+          rad: 18,
+          tub: 20
         }
       }
     },
@@ -32,7 +36,7 @@ export default {
         }
       }
     },
-    sphere: {
+    torus: {
       type: Object,
       default() {
         return{ 
@@ -60,16 +64,16 @@ export default {
   },
   methods: {
     init() {
-      let geometry = new this.$THREE.SphereGeometry( this.radius, this.segments.w, this.segments.h )
+      let geometry = new this.$THREE.TorusGeometry( this.radius, this.tube, this.segments.rad, this.segments.tub )
       let material = new this.$THREE.MeshPhysicalMaterial( {color: this.color, emissive:this.color, reflectivity: .5, metalness: .5} )
-      this.sphere.val = new this.$THREE.Mesh( geometry, material )
-      this.sphere.val.rotation.x += this.rotation.x
-      this.sphere.val.rotation.y += this.rotation.y
-      this.sphere.val.rotation.z += this.rotation.z
-      this.sphere.val.position.x += this.position.x
-      this.sphere.val.position.y += this.position.y
-      this.sphere.val.position.z += this.position.z
-      this.$scene.add( this.sphere.val )
+      this.torus.val = new this.$THREE.Mesh( geometry, material )
+      this.torus.val.rotation.x += this.rotation.x
+      this.torus.val.rotation.y += this.rotation.y
+      this.torus.val.rotation.z += this.rotation.z
+      this.torus.val.position.x += this.position.x
+      this.torus.val.position.y += this.position.y
+      this.torus.val.position.z += this.position.z
+      this.$scene.add( this.torus.val )
     },
   }
 

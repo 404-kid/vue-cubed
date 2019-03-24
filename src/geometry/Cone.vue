@@ -3,24 +3,23 @@
 
 <script>
 export default {
-  name: "sphere",
+  name: "cone",
   props: {
     color: {
       type: String,
       default: "rgba(250,250,250,1)"
     },
-    radius: {
+    height: {
       type: Number,
       default: 5
     },
+    radius: {
+      type: Number,
+      default: 3
+    },
     segments:{
-      type: Object,
-      default() {
-        return{
-          w: 16,
-          h: 16
-        }
-      }
+      type: Number,
+      default: 30
     },
     position: {
       type: Object,
@@ -32,7 +31,7 @@ export default {
         }
       }
     },
-    sphere: {
+    cone: {
       type: Object,
       default() {
         return{ 
@@ -60,16 +59,16 @@ export default {
   },
   methods: {
     init() {
-      let geometry = new this.$THREE.SphereGeometry( this.radius, this.segments.w, this.segments.h )
+      let geometry = new this.$THREE.ConeBufferGeometry( this.radius, this.height, this.segments )
       let material = new this.$THREE.MeshPhysicalMaterial( {color: this.color, emissive:this.color, reflectivity: .5, metalness: .5} )
-      this.sphere.val = new this.$THREE.Mesh( geometry, material )
-      this.sphere.val.rotation.x += this.rotation.x
-      this.sphere.val.rotation.y += this.rotation.y
-      this.sphere.val.rotation.z += this.rotation.z
-      this.sphere.val.position.x += this.position.x
-      this.sphere.val.position.y += this.position.y
-      this.sphere.val.position.z += this.position.z
-      this.$scene.add( this.sphere.val )
+      this.cone.val = new this.$THREE.Mesh( geometry, material )
+      this.cone.val.rotation.x += this.rotation.x
+      this.cone.val.rotation.y += this.rotation.y
+      this.cone.val.rotation.z += this.rotation.z
+      this.cone.val.position.x += this.position.x
+      this.cone.val.position.y += this.position.y
+      this.cone.val.position.z += this.position.z
+      this.$scene.add( this.cone.val )
     },
   }
 
